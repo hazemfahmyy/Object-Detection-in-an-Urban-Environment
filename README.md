@@ -18,7 +18,7 @@ The project was completed in the workspace provided by Udacity.
 For information on the local setup and general approach, please refer to the README in the 
 Github Starter Code Repository provided [here](https://github.com/udacity/nd013-c1-vision-starter).
 ## Data
-### Dataset Analysis
+### Exploratory Dataset Analysis (EDA)
 The implementation and original images for the exploratory analysis of our dataset can be found 
 in the [Exploratory Data Analysis](Exploratory+Data+Analysis.ipynb) notebook.
 The EDA shows that the dataset is imbalanced. 
