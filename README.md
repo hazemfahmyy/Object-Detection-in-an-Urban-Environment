@@ -27,7 +27,7 @@ as well as rainy/foggy conditions (causing reflections and blurs in the images) 
 Also, there are recordings of night drives.
 Image distortions can be observed as well, especially on the image edges.
 ![](experiments/EDA.png)
-The pie char below displays the percentage of classes across all images, and it can be seen that there are much more vehicles (78%) than pedestrians (21) and bicycles (~1%).
+The pie char below displays the percentage of classes across all images, and it can be seen that there are much more vehicles (~78%) than pedestrians (~21%) and bicycles (~1%).
 Our model is likely to overfit on vehicles, while performing less optimal on bicycles.
 ![](experiments/EDA_pie.png)
 ### Cross-validation
