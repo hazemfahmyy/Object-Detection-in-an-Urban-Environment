@@ -18,7 +18,6 @@ After a reference run on the training and validation datasets, that model should
 
 ### Set up
 The project was completed in the workspace provided by Udacity.
-
 For information on the local setup and general approach, please refer to the README in the 
 Github Starter Code Repository provided [here](https://github.com/udacity/nd013-c1-vision-starter).
 
@@ -26,22 +25,15 @@ Github Starter Code Repository provided [here](https://github.com/udacity/nd013-
 ### Dataset Analysis
 The implementation and original images for the exploratory analysis of our dataset can be found 
 in the [Exploratory Data Analysis](Exploratory+Data+Analysis.ipynb) notebook.
-
-It is obvious that the dataset is highly imbalanced (. 
-
+It is obvious that the dataset is highly imbalanced. 
 Light conditions vary heavily across the dataset, with sunny conditions (leading to bright images with high contrast)
 as well as rainy/foggy conditions (causing reflections and blurs in the images) alike. 
 Also, there are recordings of night drives.
-
 Image distortions can be observed as well, especially on the image edges.
-
 ![](experiments/EDA.png)
-
 The mentioned imbalances in the dataset are visualized below, based on 1000 images from the training dataset.
 The diagram displays the percentage of objects per object type across all sampled images, and it can be seen that there are roughly 125x more vehicles than bicycles, which make up for only ~0.6% of all objects.
-
 Our model is likely to overfit on vehicles, while performing less optimal on bicycles.
-
 ![](experiments/EDA_pie.png)
 
 ### Cross-validation
@@ -91,29 +83,19 @@ based on the results of the exploratory data analysis, I started off using some 
     }
   }
 ```
-
 The augmentation exploration can be found in the [Explore augmentations](Explore+augmentations.ipynb) notebook.
-
 In the `experiment0` run, I also increased the batch size from 2 to 6 and increased number of epochs to 2000 (to keep the same running time of 1~2hours)
-
 As a conclusion the model seems to have improved a lot in training: 
-
 The final overall loss could be reduced to around ~1.5 for the training set and ~1.8 for the test set.
 The training and validation results of the improved pipeline are displayed below:
-
 ![](experiments/experiment0/Augmentation.png)
-
 As can be seen in the animation, the detection of vehicles is - despite the improvements in metrics - still insufficient.
-
 The performance of the model is shown in the video below:
-
 ![](experiments/animation.gif)
 
 ### Outlook
 The experiments demonstrate how augmentations and model parametrization can be used to improve the performance of our object detection model.
-
 Further improvements could be made and other tactics employed e.g. for dealing specifically with the minority class,
 in order to reliably detect _all_ traffic participants or for improving the performance on small objects.
-
 Since augmenting images on a very small set of samples has its limits, 
 an important step here could be to specifically collect more image data on the minority class, bicycles.
