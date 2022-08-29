@@ -1,8 +1,8 @@
 # Project Writeup - Object Detection in an Urban Environment
 
 ## Project overview
-This project is concerned with 2D object detection in an urban environment.
-Based on camera images taken by an ego vehicle which should be detected by a pre-trained deep learning model.
+This project handles 2D object detection in an urban environment.
+Based on camera images taken by an ego vehicle which should be detected by a pre-trained deep neural-network (DNN).
 The main purpose of object detection for self-driving cars is to locate and classify objects in the vehicle's surrounding and can be performed using different sensors such as camera and lidar. Achieving object detection allows safe maneuvers to be planned and executed.
 ### Steps
 In the first step some exploratory data analysis (EDA) is performed. The overall appearance of images  (light conditions, blurs, distortions etc.) is assessed and the occurence and distribution of objects across these images was analyzed in order to decide on necessary augmentations and parameters for our algorithm.
@@ -83,4 +83,4 @@ As can be seen in the animation, the detection of vehicles is - despite the impr
 The performance of the model is shown in the video below:
 ![](experiments/animation.gif)
 
-As a further improvement, some parameters could be played with as the learning rate and batch size in addition to different augmentations (e.g., rotation and translation). 
+As a further improvement that comes at the cost of using more GPU time, some parameters could be played with as the learning rate and batch size in addition to different augmentations (e.g., rotation and translation) in order to generate different models and selecting the best results.
