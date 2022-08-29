@@ -2,10 +2,10 @@
 
 ## Project overview
 This project is concerned with 2D object detection in an urban environment.
-Based on camera images taken by an ego vehicle which should be detected by a pre-trained deep learning algorithm.
-The main purpose of object detection for self-driving cars is to locate and classify objects in the vehicle's surrounding and can be performed using different sensors (e.g. camera, lidar). This is an important task for the operation of a self-driving car to run safely, allowing it to visualize other surroundings in its environment. Achieving object detection allows safe maneuvers to be planned and executed.
+Based on camera images taken by an ego vehicle which should be detected by a pre-trained deep learning model.
+The main purpose of object detection for self-driving cars is to locate and classify objects in the vehicle's surrounding and can be performed using different sensors such as camera and lidar. Achieving object detection allows safe maneuvers to be planned and executed.
 ### Steps
-As a first step, some exploratory data analysis (EDA) is performed. The overall appearance of images  (light conditions, blurs, distortions etc.) was assessed and the occurence and distribution of objects across these images was analyzed in order to decide on necessary augmentations and parameters for our algorithm.
+In the first step some exploratory data analysis (EDA) is performed. The overall appearance of images  (light conditions, blurs, distortions etc.) is assessed and the occurence and distribution of objects across these images was analyzed in order to decide on necessary augmentations and parameters for our algorithm.
 
 In the second step, the pretrained SSD Resnet 50 640x640 model was downloaded from [tensorflow.org](http://download.tensorflow.org/models/object_detection/tf2/20200711/ssd_resnet50_v1_fpn_640x640_coco17_tpu-8.tar.gz) and the respective pipeline set up for training and validation using the config file.
 
@@ -21,31 +21,28 @@ Github Starter Code Repository provided [here](https://github.com/udacity/nd013-
 ### Dataset Analysis
 The implementation and original images for the exploratory analysis of our dataset can be found 
 in the [Exploratory Data Analysis](Exploratory+Data+Analysis.ipynb) notebook.
-It is obvious that the dataset is highly imbalanced. 
+The EDA shows that the dataset is imbalanced. 
 Light conditions vary heavily across the dataset, with sunny conditions (leading to bright images with high contrast)
 as well as rainy/foggy conditions (causing reflections and blurs in the images) alike. 
 Also, there are recordings of night drives.
 Image distortions can be observed as well, especially on the image edges.
 ![](experiments/EDA.png)
-The mentioned imbalances in the dataset are visualized below, based on 1000 images from the training dataset.
-The diagram displays the percentage of objects per object type across all sampled images, and it can be seen that there are roughly 125x more vehicles than bicycles, which make up for only ~0.6% of all objects.
+The pie char below displays the percentage of classes across all images, and it can be seen that there are much more vehicles (78%) than pedestrians (21) and bicycles (~1%).
 Our model is likely to overfit on vehicles, while performing less optimal on bicycles.
 ![](experiments/EDA_pie.png)
 ### Cross-validation
-The creation of training vs. validation split, which is usually performed based on the EDA, was already done in the workspace, with 87 images and 10 images in the training and validation set.
+The creation of training and validation split was already done in the workspace, with 87 images and 10 images in the training and validation set.
 ## Training & Evaluation
 ### Reference experiment
-As expected, the reference run with the pretrained model did not yield optimal results.
-The losses decrease with the number of epochs, 
-but e.g. the classification loss seems to reach a base plateau rather fast.
+The reference run with the pretrained model had very suboptimal results.
 The final overall loss is ~4.5 for the training set and ~4.7 for the test set.
 ![](experiments/reference/noAugmentation.png)
 ### Improvement on the reference - experiment0
-based on the results of the exploratory data analysis, I started off using some image augmentations, e.g.
+based on the results of the EDA, different augmentations are used, e.g.
 * `random_adjust_brightness` to increase the diversity in brightness across the given images
 * `random_adjust_hue`, `random_rgb_to_gray` to mimic different light conditions (e.g. a blueish or yellowish tint caused by artificial lights)
 * `random_black_patches` to mimic occlusions (i.e. caused by other objects)
-* I kept the already implemented augmentations (horizontal flip and image crop)
+* the default agumentations are also kept in the config file (experiments/experiment0/pipeline_new.config) (horizontal flip and image crop)
 
 ```
   data_augmentation_options {
@@ -76,12 +73,14 @@ based on the results of the exploratory data analysis, I started off using some 
   }
 ```
 The augmentation exploration can be found in the [Explore augmentations](Explore+augmentations.ipynb) notebook.
-In the `experiment0` run, I also increased the batch size from 2 to 6 and increased number of epochs to 2000 (to keep the same running time of 1~2hours)
-As a conclusion the model seems to have improved a lot in training: 
+In the `experiment0` run, I also increased the batch size from 2 to 6 and decreased number of epochs from 2500 to 2000 (to keep the same running time of 1~2hours).
+As a conclusion the model seems to have improved in training: 
 The final overall loss could be reduced to around ~1.5 for the training set and ~1.8 for the test set.
+Also as seen from the image below, Early-Stopping could come handful in such a case to stop learning at epoch number 300 where the training had its global minimum at ~0.9 and increased to ~2.6, where it kept iterating to reach a final loss of ~1.5.
 The training and validation results of the improved pipeline are displayed below:
 ![](experiments/experiment0/Augmentation.png)
 As can be seen in the animation, the detection of vehicles is - despite the improvements in metrics - still insufficient.
 The performance of the model is shown in the video below:
 ![](experiments/animation.gif)
 
+As a further improvement, some parameters could be played with as the learning rate and batch size in addition to different augmentations (e.g., rotation and translation). 
