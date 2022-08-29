@@ -20,7 +20,7 @@ Github Starter Code Repository provided [here](https://github.com/udacity/nd013-
 ## Data
 ### Exploratory Dataset Analysis (EDA)
 The implementation and original images for the exploratory analysis of our dataset can be found 
-in the [Exploratory Data Analysis](Exploratory+Data+Analysis.ipynb) notebook.
+in the [Exploratory Data Analysis](Exploratory Data Analysis.ipynb) notebook.
 The EDA shows that the dataset is imbalanced. 
 Light conditions vary heavily across the dataset, with sunny conditions (leading to bright images with high contrast)
 as well as rainy/foggy conditions (causing reflections and blurs in the images) alike. 
