@@ -72,7 +72,7 @@ based on the results of the EDA, different augmentations are used, e.g.
     }
   }
 ```
-The augmentation exploration can be found in the [[Explore augmentations](Explore+augmentations.ipynb)](https://github.com/hazemfahmyy/Object-Detection-in-an-Urban-Environment/blob/main/Explore%20augmentations.ipynb) notebook.
+The augmentation exploration can be found in the ([Explore augmentations](Explore+augmentations.ipynb)](https://github.com/hazemfahmyy/Object-Detection-in-an-Urban-Environment/blob/main/Explore%20augmentations.ipynb)) notebook.
 In the `experiment0` run, I also increased the batch size from 2 to 6 and decreased number of epochs from 2500 to 2000 (to keep the same running time of 1~2hours).
 As a conclusion the model seems to have improved in training: 
 The final overall loss could be reduced to around ~1.5 (pink plot) for the training set and ~1.8 (green dot) for the test set.
