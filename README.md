@@ -79,8 +79,7 @@ The final overall loss could be reduced to around ~1.5 for the training set and 
 Also as seen from the image below, Early-Stopping could come handful in such a case to stop learning at epoch number 300 where the training had its global minimum at ~0.9 and increased to ~2.6, where it kept iterating to reach a final loss of ~1.5.
 The training and validation results of the improved pipeline are displayed below:
 ![](experiments/experiment0/Augmentation.png)
-As can be seen in the animation, the detection of vehicles is - despite the improvements in metrics - still insufficient.
-The performance of the model is shown in the video below:
+As can be seen in the animation below, the detection of vehicles is - despite the improvements in metrics - still insufficient where some vehicles were not detected at the begining of the scene:
 ![](experiments/animation.gif)
 
 As a further improvement that comes at the cost of using more GPU time, some parameters could be played with as the learning rate and batch size in addition to different augmentations (e.g., rotation and translation) in order to generate different models and selecting the best results.
