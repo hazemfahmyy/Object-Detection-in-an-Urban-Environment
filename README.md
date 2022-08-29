@@ -84,9 +84,4 @@ The training and validation results of the improved pipeline are displayed below
 As can be seen in the animation, the detection of vehicles is - despite the improvements in metrics - still insufficient.
 The performance of the model is shown in the video below:
 ![](experiments/animation.gif)
-### Outlook
-The experiments demonstrate how augmentations and model parametrization can be used to improve the performance of our object detection model.
-Further improvements could be made and other tactics employed e.g. for dealing specifically with the minority class,
-in order to reliably detect _all_ traffic participants or for improving the performance on small objects.
-Since augmenting images on a very small set of samples has its limits, 
-an important step here could be to specifically collect more image data on the minority class, bicycles.
+
