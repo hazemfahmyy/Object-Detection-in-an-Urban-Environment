@@ -35,7 +35,7 @@ The creation of training and validation split was already done in the workspace,
 ## Training & Evaluation
 ### Reference experiment
 The reference run with the pretrained model had very suboptimal results.
-The final overall loss is ~4.5 for the training set and ~4.7 for the test set.
+The final overall loss is ~4.5 (orange plot) for the training set and ~4.7 (blue dot) for the test set.
 ![](experiments/reference/noAugmentation.png)
 ### Improvement on the reference - experiment0
 based on the results of the EDA, different augmentations are used, e.g.
@@ -75,7 +75,7 @@ based on the results of the EDA, different augmentations are used, e.g.
 The augmentation exploration can be found in the [Explore augmentations](Explore+augmentations.ipynb) notebook.
 In the `experiment0` run, I also increased the batch size from 2 to 6 and decreased number of epochs from 2500 to 2000 (to keep the same running time of 1~2hours).
 As a conclusion the model seems to have improved in training: 
-The final overall loss could be reduced to around ~1.5 for the training set and ~1.8 for the test set.
+The final overall loss could be reduced to around ~1.5 (pink plot) for the training set and ~1.8 (green dot) for the test set.
 Also as seen from the image below, Early-Stopping could come handful in such a case to stop learning at epoch number 300 where the training had its global minimum at ~0.9 and increased to ~2.6, where it kept iterating to reach a final loss of ~1.5.
 The training and validation results of the improved pipeline are displayed below:
 ![](experiments/experiment0/Augmentation.png)
